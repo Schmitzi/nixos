@@ -3,12 +3,7 @@
   pkgs,
   ...
 }: let
-  zen =
-    (import (builtins.fetchTarball {
-      url = "https://github.com/youwen5/zen-browser-flake/archive/master.tar.gz";
-    }) {inherit pkgs;}).default;
-
-  username = "fbruggem";
+  username = "schmitzi";
 in {
   imports = [
     /etc/nixos/hardware-configuration.nix
@@ -23,20 +18,18 @@ in {
   environment.systemPackages = with pkgs; [
     # Apps
     ghostty
-    zen
+    firefox
     discord
-    spotify
     obsidian
+
     # neovim
     neovim
     fzf
     ripgrep
     xclip
     clang-tools
-    cargo
     tree-sitter
     nodejs
-    htop
 
     man-pages
     alejandra
@@ -60,10 +53,11 @@ in {
             "switch-to-workspace-2" = ["<Alt>2"];
             "switch-to-workspace-3" = ["<Alt>3"];
             "switch-to-workspace-4" = ["<Alt>4"];
+            "switch-to-workspace-5" = ["<Alt>5"];
             "toggle-fullscreen" = ["<Super>f"];
           };
           "org/gnome/desktop/wm/preferences" = {
-            "num-workspaces" = pkgs.lib.gvariant.mkInt32 4;
+            "num-workspaces" = pkgs.lib.gvariant.mkInt32 5;
           };
           "org/gnome/mutter" = {
             "dynamic-workspaces" = false;
@@ -89,8 +83,8 @@ in {
   programs.git = {
     enable = true;
     config = {
-      user.name = "fbruggem";
-      user.email = "fbruggem@proton.me";
+      user.name = "Michael Naysmith";
+      user.email = "naysmithmichael@gmail.com";
       pull.rebase = false;
     };
   };
